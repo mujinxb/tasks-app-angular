@@ -1,0 +1,43 @@
+<div class="row d-flex justify-content-center ">
+  <div class="col-sm-8 col-md-6 mt-5 bg-dark p-4 text-white">
+
+    <div class="alert alert-danger d-flex justify-content-center"
+    *ngIf="loginError">
+      <p><strong>Login error!</strong> Invalid email/password.</p>
+    </div>
+
+    <form #loginForm="ngForm" (ngSubmit) = "onSubmit(loginForm)" >
+      <div class="text-center">
+        <h2>Login</h2>
+        <hr>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="john@doe.com"
+        name="email" [(ngModel)] = "loginModel.email" required email #email="ngModel">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+          <div *ngIf="email.errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="email.errors.email">
+            Please provide a valid email.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password"
+        name="password" [(ngModel)] = "loginModel.password" required #pw="ngModel">
+        <div *ngIf="pw.invalid && (pw.dirty || pw.touched)" class="alert alert-danger">
+          <div *ngIf="pw.errors.required">
+            Password is required.
+          </div>
+        </div>
+      </div>
+      <button [disabled]="!loginForm.valid"  type="submit" class="btn btn-lg form-control btn-primary">Login</button>
+    </form>
+
+  </div>
+</div>
