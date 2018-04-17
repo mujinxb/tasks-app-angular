@@ -30,6 +30,8 @@ import { AdminDirective } from './core/directives/admin.directive';
 import { UserDirective } from './core/directives/user.directive';
 import { AuthDirective } from './core/directives/auth.directive';
 import { NoAuthDirective } from './core/directives/no-auth.directive';
+import { UserItemComponent } from './dashboard/admin/user-list/user-item/user-item.component';
+import { UserApiService } from './core/services/user-api.service';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { NoAuthDirective } from './core/directives/no-auth.directive';
     UserDirective,
     AuthDirective,
     NoAuthDirective,
+    UserItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import { NoAuthDirective } from './core/directives/no-auth.directive';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
-    }
+    },
+    UserApiService
   ],
   bootstrap: [AppComponent]
 })

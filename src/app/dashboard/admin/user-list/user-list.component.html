@@ -8,7 +8,11 @@
 </div>
 
 <div class="row mt-3">
-    <div class="col-sm-6 col-md-4">
-        
+    
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-2"
+        *ngFor="let user of users"
+        (click)=onUserSelect(user)>
+            <app-user-item  [user] ="user"></app-user-item>
     </div>
+    
 </div>
