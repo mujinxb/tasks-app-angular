@@ -9,6 +9,7 @@ import { UserService } from './user.service';
 import { JwtService } from './jwt.service';
 import { LoginModel } from '../../auth/login.model';
 import { AuthUser } from '../auth-user.model';
+import { RegisterModel } from '../../auth/register/register.model';
 
 
 
@@ -53,5 +54,9 @@ export class AuthService {
 
     resetAuth(): void {
         this.userService.purgeAuth();
+    }
+
+    register(registerModel: RegisterModel) {
+        return this.apiService.post('register', registerModel);
     }
 }

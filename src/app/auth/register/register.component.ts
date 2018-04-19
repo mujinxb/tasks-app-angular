@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { RegisterModel } from './register.model';
+import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +12,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  registerModel: RegisterModel = new RegisterModel();
+  registerErrors =  null;
+  errorMessage = null;
+
+  constructor(private atuhService: AuthService,
+    private router: Router,
+) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(form: NgForm) {
+    this.register();
+  }
+
+  register()  {
+    this.errorMessage = null;
+    this.registerErrors = null;
+    this.atuhService.register(this.registerModel).subscribe(
+      resp => {
+        this.router.navigate(['/users']);
+      },
+      (err: HttpErrorResponse) => {
+        if (err.status === 422) {
+          console.log(err.error);
+          this.errorMessage =  err.error.message;
+          this.handleInvalidDataError(err.error.errors);
+        } else {
+          this.errorMessage = 'Something went wrong, try again!';
+        }
+      }
+    );
+  }
+
+  handleInvalidDataError(error) {
+    this.registerErrors = [];
+
+    for (let key in error) {
+      if (error.hasOwnProperty(key)) {
+          this.registerErrors.push(key + ' : ' + error[key]);
+      }
+  }
   }
 
 }

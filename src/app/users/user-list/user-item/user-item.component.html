@@ -1,16 +1,21 @@
 
 <div class="card ">
     <div class="card-body ">
+
       <h5 class="card-title text-center">{{ user.name | uppercase }}</h5>
+
       <h6 class="card-subtitle mb-2 text-muted">ID: {{ user.id }}</h6>
+
       <p class="card-text">Status: 
         <span class="badge" [ngClass]="user.active ? 'badge-success' : 'badge-danger'">
           {{ user.active == false ? 'inactive' : 'active' }}
         </span>
       </p>
+
       <div class="d-flex justify-content-between">
         <div >Assigned Tasks: <span class="badge badge-secondary">{{user.assignedTasks}}</span></div>
         <div >Completed Tasks: <span class="badge badge-success">{{user.completedTasks}}</span></div>
       </div>
+      
     </div>
 </div>

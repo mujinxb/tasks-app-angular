@@ -19,9 +19,4 @@ export class UserApiService {
 
   }
 
-
-  getCurrentUser() {
-
-  }
-
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { USER_ITEMS } from '../../../core/mock/user-items.mock';
-import { UserItem } from '../../../core/models/user-item.model';
-import { UserApiService } from '../../../core/services/user-api.service';
 import { Router } from '@angular/router';
+import { UserItem } from '../../core/models/user-item.model';
+import { UserApiService } from '../../core/services/user-api.service';
 
 @Component({
   selector: 'app-user-list',
@@ -27,7 +26,7 @@ export class UserListComponent implements OnInit {
   }
 
   onUserSelect(user: UserItem) {
-    this.router.navigate(['/user', user.id]);
+    this.router.navigate(['/users', user.id]);
   }
 
 }

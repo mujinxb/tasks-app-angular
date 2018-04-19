@@ -15,7 +15,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './dashboard/admin/admin.component';
 import { UserComponent } from './dashboard/user/user.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { UserListComponent } from './dashboard/admin/user-list/user-list.component';
 import { AssignTaskComponent } from './tasks/assign-task/assign-task.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ApiService } from './core/services/api.service';
@@ -30,8 +29,12 @@ import { AdminDirective } from './core/directives/admin.directive';
 import { UserDirective } from './core/directives/user.directive';
 import { AuthDirective } from './core/directives/auth.directive';
 import { NoAuthDirective } from './core/directives/no-auth.directive';
-import { UserItemComponent } from './dashboard/admin/user-list/user-item/user-item.component';
 import { UserApiService } from './core/services/user-api.service';
+import { UsersComponent } from './users/users.component';
+import { UserDetailsComponent } from './users/user-list/user-details/user-details.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserItemComponent } from './users/user-list/user-item/user-item.component';
+import { EditUserComponent } from './auth/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -46,14 +49,17 @@ import { UserApiService } from './core/services/user-api.service';
     DashboardComponent,
     AdminComponent,
     UserComponent,
-    UserListComponent,
     AssignTaskComponent,
     PageNotFoundComponent,
     AdminDirective,
     UserDirective,
     AuthDirective,
     NoAuthDirective,
+    UserListComponent,
     UserItemComponent,
+    UsersComponent,
+    UserDetailsComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
