@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RegisterModel } from '../register/register.model';
+import { UserApiService } from '../../core/services/user-api.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-user',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditUserComponent implements OnInit {
 
-  constructor() { }
+  userData: RegisterModel = new RegisterModel();
+  editErrors =  null;
+  errorMessage = null;
+  constructor( private route: ActivatedRoute, private userApiService: UserApiService) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot.params['id']);
+  }
+
+  onSubmit(form: NgForm) {
+    this.editUser();
+  }
+
+  editUser() {
+    console.log('edited');
   }
 
 }
