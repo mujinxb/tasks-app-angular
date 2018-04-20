@@ -35,6 +35,7 @@ import { UserDetailsComponent } from './users/user-list/user-details/user-detail
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserItemComponent } from './users/user-list/user-item/user-item.component';
 import { EditUserComponent } from './auth/edit-user/edit-user.component';
+import { UserContainerComponent } from './users/user-list/user-container/user-container.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { EditUserComponent } from './auth/edit-user/edit-user.component';
     UsersComponent,
     UserDetailsComponent,
     EditUserComponent,
+    UserContainerComponent,
   ],
   imports: [
     BrowserModule,

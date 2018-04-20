@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserItem } from '../../../core/models/user-item.model';
+import { UserService } from '../../../core/services/user.service';
 
 
 @Component({
@@ -11,8 +12,12 @@ export class UserItemComponent implements OnInit {
 
   @Input() user: UserItem;
 
-  constructor() { }
 
+  get authUser() {
+    return this.userService.user;
+  }
+
+  constructor(private userService: UserService) { }
   ngOnInit() {
   }
 
