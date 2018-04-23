@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'feedback/new', component: FeedbackBoxComponent, canActivate: [AuthGuard]},
 
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard, AdminGuard]},
-  { path: 'users/register', component: RegisterComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'users/new', component: RegisterComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/:id/edit', component: EditUserComponent, canActivate: [AuthGuard, AdminGuard]},
 
