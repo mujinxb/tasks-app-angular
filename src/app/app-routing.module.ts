@@ -14,6 +14,7 @@ import { UsersComponent } from './users/users.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { UserDetailsComponent } from './users/user-list/user-details/user-details.component';
 import { EditUserComponent } from './auth/edit-user/edit-user.component';
+import { NewTaskComponent } from './tasks/new-task/new-task.component';
 
 
 const routes: Routes = [
@@ -23,10 +24,10 @@ const routes: Routes = [
   { path: 'assigntask', component: AssignTaskComponent, canActivate: [AuthGuard, AdminGuard]},
 
   { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
-  { path: 'tasks/new', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'tasks/new', component: NewTaskComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'tasks/:id', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'tasks/:id/edit', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
-  { path: 'tasks/:id/user/:id', component: TasksComponent, canActivate: [AuthGuard]},
+  { path: 'tasks/:id/users/:id', component: TasksComponent, canActivate: [AuthGuard]},
 
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/register', component: RegisterComponent, canActivate: [AuthGuard, AdminGuard]},
