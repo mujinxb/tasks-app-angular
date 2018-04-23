@@ -29,7 +29,7 @@ const routes: Routes = [
 
   { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'tasks/new', component: NewTaskComponent, canActivate: [AuthGuard, AdminGuard]},
-  { path: 'tasks/:id', component: TaskDetailComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'tasks/:id', component: TaskDetailComponent, canActivate: [AuthGuard]},
   { path: 'tasks/:id/edit', component: EditTaskComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'tasks/:id/users/:id', component: UserTaskComponent, canActivate: [AuthGuard]},
 

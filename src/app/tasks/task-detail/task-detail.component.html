@@ -6,9 +6,16 @@
     
 </div>
 
-<div class="row mt-3">
+<div class="row mt-3" *appAdmin="authUser">
     <div class="col-12">
         <app-task-users></app-task-users>
+    </div>
+</div>
+
+
+<div class="row mt-3">
+    <div class="col-12">
+        <app-feedback-list></app-feedback-list>
     </div>
 </div>
 
