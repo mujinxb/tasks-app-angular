@@ -38,6 +38,9 @@ import { EditUserComponent } from './auth/edit-user/edit-user.component';
 import { UserContainerComponent } from './users/user-list/user-container/user-container.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
+import { UserTaskComponent } from './tasks/user-task/user-task.component';
+import { TaskDescriptionComponent } from './tasks/task-description/task-description.component';
+import { TaskUsersComponent } from './tasks/task-users/task-users.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,9 @@ import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
     UserContainerComponent,
     NewTaskComponent,
     EditTaskComponent,
+    UserTaskComponent,
+    TaskDescriptionComponent,
+    TaskUsersComponent,
   ],
   imports: [
     BrowserModule,
