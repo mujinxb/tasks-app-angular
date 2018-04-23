@@ -2,7 +2,7 @@
     <div class="col-12 bg-light p-4">
         <div class="col-12 d-flex justify-content-between">
             <h1>Tasks</h1>
-            <button *appAdmin="authUser" class="btn btn-sm btn-primary" routerLink="/tasks/new">Create New Task</button>
+            <a *appAdmin="authUser" class="btn btn-primary" routerLink="/tasks/new">Create New Task</a>
         </div>
         <hr>
         <app-task-list></app-task-list>
