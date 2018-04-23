@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
-import { TaskDetailComponent } from './tasks/task-list/task-detail/task-detail.component';
+import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskItemComponent } from './tasks/task-list/task-item/task-item.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -37,6 +37,7 @@ import { UserItemComponent } from './users/user-list/user-item/user-item.compone
 import { EditUserComponent } from './auth/edit-user/edit-user.component';
 import { UserContainerComponent } from './users/user-list/user-container/user-container.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
+import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { NewTaskComponent } from './tasks/new-task/new-task.component';
     EditUserComponent,
     UserContainerComponent,
     NewTaskComponent,
+    EditTaskComponent,
   ],
   imports: [
     BrowserModule,
