@@ -12,12 +12,13 @@ import { NgForm } from '@angular/forms';
 export class EditUserComponent implements OnInit {
 
   userData: RegisterModel = new RegisterModel();
+  id: number;
   editErrors =  null;
   errorMessage = null;
   constructor( private route: ActivatedRoute, private userApiService: UserApiService) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params['id']);
+    this.id = this.route.snapshot.params['id'];
   }
 
   onSubmit(form: NgForm) {
@@ -26,6 +27,13 @@ export class EditUserComponent implements OnInit {
 
   editUser() {
     console.log('edited');
+  }
+
+  deleteUser() {
+    const ans = confirm('Do you really want to delete the user? You have the option to deactivate it!');
+    if (ans) {
+      console.log('deleted ' + this.id);
+    }
   }
 
 }

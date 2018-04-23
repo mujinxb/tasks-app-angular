@@ -2,19 +2,22 @@
 <div class="card ">
     <div class="card-body ">
 
-      <h5 class="card-title text-center">{{ user.name | uppercase }}</h5>
+      <h5 class="card-title text-center">{{ 'Name' | uppercase }}</h5>
+      <hr>
 
-      <h6 class="card-subtitle mb-2 text-muted">ID: {{ user.id }}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">ID: {{ 00 }}</h6>
 
-      <p class="card-text">Status: 
-        <span class="badge" [ngClass]="user.active ? 'badge-success' : 'badge-danger'">
-          {{ user.active == false ? 'inactive' : 'active' }}
+      <p *appAdmin="authUser" class="card-text">Status: 
+        <span class="badge" [ngClass]="{'badge-success' : user?.active == true,  'badge-danger': user?.active == false}">
+          {{ user?.active == true ? 'Active' : 'Inactive' }}
         </span>
       </p>
 
+      <hr>
+
       <div class="d-flex justify-content-between">
-        <div >Assigned Tasks: <span class="badge badge-secondary">{{user.assignedTasks}}</span></div>
-        <div >Completed Tasks: <span class="badge badge-success">{{user.completedTasks}}</span></div>
+        <div >Assigned Tasks: <span class="badge badge-secondary"> 0    {{user?.assignedTasks}}</span></div>
+        <div >Completed Tasks: <span class="badge badge-success"> 0   {{user?.completedTasks}}</span></div>
       </div>
       
     </div>

@@ -1,0 +1,8 @@
+h5 {
+    cursor: pointer;
+    color: #00a5ed;
+}
+
+h5:hover {
+    color: rgb(73, 149, 151);
+}

@@ -70,9 +70,16 @@
         </select>
       </div>
 
-      <button [disabled]="!editForm.valid"  type="submit" class="btn btn-lg form-control btn-dark">Save Changes</button>
+      
+      <button [disabled]="!editForm.valid"  type="submit" class="btn btn-lg btn-dark form-control">Save Changes</button>
+
+      
     </form>
 
+    <div class="text-center">
+        <button  (click)=deleteUser()  class="btn btn-danger mt-2">Delete User</button>
+    </div>
+    
   </div>
 </div>
   

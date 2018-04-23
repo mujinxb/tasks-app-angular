@@ -19,12 +19,20 @@ import { EditUserComponent } from './auth/edit-user/edit-user.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [GuestGuard]},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+
   { path: 'assigntask', component: AssignTaskComponent, canActivate: [AuthGuard, AdminGuard]},
-  { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard]},
+
+  { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'tasks/new', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'tasks/:id', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'tasks/:id/edit', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'tasks/:id/user/:id', component: TasksComponent, canActivate: [AuthGuard]},
+
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/register', component: RegisterComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/:id/edit', component: EditUserComponent, canActivate: [AuthGuard, AdminGuard]},
+
   { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 ];
