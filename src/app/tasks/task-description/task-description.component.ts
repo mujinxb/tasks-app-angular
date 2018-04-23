@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-task-description',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskDescriptionComponent implements OnInit {
 
-  constructor() { }
+  get authUser() {
+    return this.userService.user;
+  }
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }

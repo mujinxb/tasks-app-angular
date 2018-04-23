@@ -1,3 +1,18 @@
-<p>
-  task-description works!
-</p>
+<div class="card">
+  <h5 class="card-header bg-dark text-white">My Title</h5>
+  <div class="card-body">
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <hr>
+    <p class="d-flex justify-content-between">
+        <span class="card-text"><small class="text-muted">Assigned at</small></span>
+        <span class="card-text"><small class="text-muted">Completed at</small></span>
+    </p>
+  </div>
+  <div *appAdmin="authUser" class="card-footer">
+    <p class="d-flex justify-content-between">
+      <span class="card-text"><small class="text-muted">Created at</small></span>
+      <span class="card-text"><small class="text-muted">Updated at</small></span>
+    </p>
+    <a class="btn btn-info" routerLink="/tasks/1/edit">Edit Task</a>
+  </div>
+</div>

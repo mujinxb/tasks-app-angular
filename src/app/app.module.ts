@@ -41,6 +41,10 @@ import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
 import { UserTaskComponent } from './tasks/user-task/user-task.component';
 import { TaskDescriptionComponent } from './tasks/task-description/task-description.component';
 import { TaskUsersComponent } from './tasks/task-users/task-users.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { FeedbackListComponent } from './feedback/feedback-list/feedback-list.component';
+import { FeedbackItemComponent } from './feedback/feedback-item/feedback-item.component';
+import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +76,10 @@ import { TaskUsersComponent } from './tasks/task-users/task-users.component';
     UserTaskComponent,
     TaskDescriptionComponent,
     TaskUsersComponent,
+    FeedbackComponent,
+    FeedbackListComponent,
+    FeedbackItemComponent,
+    FeedbackBoxComponent,
   ],
   imports: [
     BrowserModule,
