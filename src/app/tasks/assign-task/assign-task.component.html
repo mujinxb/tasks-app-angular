@@ -11,16 +11,26 @@
                 <select class="form-control" id="task" required name="task" #taskId="ngModel" ngModel>
                     <option   *ngFor="let task of tasks"  value = {{task.id}} >{{ task.title }}</option>
                 </select>
+                <!-- <div *ngIf="taskId.invalid && (taskId.dirty || taskId.touched)" class="alert alert-danger">
+                    <div *ngIf="taskId.errors.required">
+                        Task must be selected for assignement.
+                    </div>
+                </div> -->
             </div>
         
             <div class="form-group">
-                <label for="users">Select Users (You can select multiple)</label>
-                <select class="form-control" id="users" required name="users" #UserIds="ngModel" ngModel >
+                <label for="users">Select Users (You can select multiple(tab/cmd))</label>
+                <select multiple class="form-control" id="users" required name="users" #UserIds="ngModel" ngModel >
                     <option   *ngFor="let user of users"  value = {{user.id}} >{{ user.name }}</option>
                 </select>
+                <!-- <div *ngIf="UserIds.invalid && (UserIds.dirty || UserIds.touched)" class="alert alert-danger">
+                    <div *ngIf="UserIds.errors.required">
+                        Select users to assign Task.
+                    </div>
+                </div> -->
             </div>
         
-            <button type="submit" class="btn btn-lg form-control btn-dark">Assign Task</button>
+            <button type="submit" [disabled]="!assignForm.valid" class="btn btn-lg form-control btn-dark">Assign Task</button>
         </form>
     
     </div>
