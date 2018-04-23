@@ -6,16 +6,20 @@ import { AuthUser } from '../auth-user.model';
 })
 export class NoAuthDirective {
 
+  private hasView = false;
+
   constructor(
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef) { }
 
 
   @Input() set appNoAuth(user: AuthUser) {
-    if (!user.isAuthenticated) {
+    if (!user.isAuthenticated && !this.hasView) {
       this.viewContainer.createEmbeddedView(this.templateRef);
-    } else {
+      this.hasView = true;
+    } else if (user.isAuthenticated && this.hasView) {
       this.viewContainer.clear();
+      this.hasView = false;
     }
   }
 
