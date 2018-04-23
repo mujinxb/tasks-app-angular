@@ -33,8 +33,6 @@ const routes: Routes = [
   { path: 'tasks/:id/edit', component: EditTaskComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'tasks/:id/users/:id', component: UserTaskComponent, canActivate: [AuthGuard]},
 
-  { path: 'feedback/new', component: FeedbackBoxComponent, canActivate: [AuthGuard]},
-
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/new', component: RegisterComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard, AdminGuard]},
