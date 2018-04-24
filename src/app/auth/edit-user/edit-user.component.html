@@ -1,5 +1,5 @@
 <div class="row d-flex justify-content-center ">
-  <div class="col-sm-8 col-md-6 mt-5 bg-info p-4 text-white">
+  <div class="col-sm-8 col-md-6 mt-5  p-4 bg-dark text-white ">
 
     <div class="alert alert-danger"
     *ngIf="errorMessage">
@@ -71,12 +71,13 @@
       </div>
 
       
-      <button [disabled]="!editForm.valid"  type="submit" class="btn btn-lg btn-dark form-control">Save Changes</button>
+      <button [disabled]="!editForm.valid"  type="submit" class="btn btn-lg btn-primary form-control">Save Changes</button>
 
       
     </form>
 
     <div class="text-center">
+        <button   class="btn btn-info mt-2">Cancel</button>
         <button  (click)=deleteUser()  class="btn btn-danger mt-2">Delete User</button>
     </div>
     
