@@ -15,7 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './dashboard/admin/admin.component';
 import { UserComponent } from './dashboard/user/user.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { AssignTaskComponent } from './tasks/assign-task/assign-task.component';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ApiService } from './core/services/api.service';
 import { UserService } from './core/services/user.service';
@@ -59,7 +59,6 @@ import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.compo
     DashboardComponent,
     AdminComponent,
     UserComponent,
-    AssignTaskComponent,
     PageNotFoundComponent,
     AdminDirective,
     UserDirective,
