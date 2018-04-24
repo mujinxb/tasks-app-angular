@@ -1,9 +1,11 @@
 
 <div class="card ">
-    <div class="card-body ">
 
-      <h5 class="card-title text-center">{{ 'Name' | uppercase }}</h5>
-      <hr>
+    <div class="card-header text-center">
+      <h5>{{ 'Name' | uppercase }}</h5>
+    </div>
+
+    <div class="card-body ">
 
       <h6 class="card-subtitle mb-2 text-muted">ID: {{ 00 }}</h6>
 
@@ -12,13 +14,10 @@
           {{ user?.active == true ? 'Active' : 'Inactive' }}
         </span>
       </p>
+    </div>
 
-      <hr>
-
-      <div class="d-flex justify-content-between">
-        <div >Assigned Tasks: <span class="badge badge-secondary"> 0    {{user?.assignedTasks}}</span></div>
-        <div >Completed Tasks: <span class="badge badge-success"> 0   {{user?.completedTasks}}</span></div>
-      </div>
-      
+    <div class="card-footer d-flex justify-content-between">
+        <div >Assigned Tasks: <span class="badge badge-secondary"> {{user?.assignedTasks}}</span></div>
+        <div >Completed Tasks: <span class="badge badge-success"> {{user?.completedTasks}}</span></div>
     </div>
 </div>
