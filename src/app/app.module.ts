@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -45,6 +46,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { FeedbackListComponent } from './feedback/feedback-list/feedback-list.component';
 import { FeedbackItemComponent } from './feedback/feedback-item/feedback-item.component';
 import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.component';
+import { AssignTaskComponent } from './tasks/assign-task/assign-task.component';
 
 @NgModule({
   declarations: [
@@ -79,12 +81,14 @@ import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.compo
     FeedbackListComponent,
     FeedbackItemComponent,
     FeedbackBoxComponent,
+    AssignTaskComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgSelectModule
   ],
   providers: [
     ApiService,
