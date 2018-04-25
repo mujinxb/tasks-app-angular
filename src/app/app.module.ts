@@ -47,6 +47,7 @@ import { FeedbackListComponent } from './feedback/feedback-list/feedback-list.co
 import { FeedbackItemComponent } from './feedback/feedback-item/feedback-item.component';
 import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.component';
 import { AssignTaskComponent } from './tasks/assign-task/assign-task.component';
+import { TasksContainerComponent } from './tasks/tasks-container/tasks-container.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { AssignTaskComponent } from './tasks/assign-task/assign-task.component';
     FeedbackItemComponent,
     FeedbackBoxComponent,
     AssignTaskComponent,
+    TasksContainerComponent,
   ],
   imports: [
     BrowserModule,

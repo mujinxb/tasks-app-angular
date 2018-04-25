@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
-import { TasksComponent } from './tasks/tasks.component';
+
 import { LoginComponent } from './auth/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GuestGuard } from './core/guards/guest.guard';
@@ -18,13 +18,14 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
 import { UserTaskComponent } from './tasks/user-task/user-task.component';
 import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.component';
+import { TasksContainerComponent } from './tasks/tasks-container/tasks-container.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [GuestGuard]},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
 
-  { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'tasks', component: TasksContainerComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'tasks/new', component: NewTaskComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'tasks/:id', component: TaskDetailComponent, canActivate: [AuthGuard]},
   { path: 'tasks/:id/edit', component: EditTaskComponent, canActivate: [AuthGuard, AdminGuard]},
