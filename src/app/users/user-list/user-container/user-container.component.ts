@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { UserService } from '../../../core/services/user.service';
   styleUrls: ['./user-container.component.css']
 })
 export class UserContainerComponent implements OnInit {
+
+  @Input() userId: number;
 
   get authUser() {
     return this.userService.user;

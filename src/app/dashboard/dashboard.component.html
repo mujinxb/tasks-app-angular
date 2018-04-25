@@ -2,4 +2,7 @@
 
 <app-admin *appAdmin="user"></app-admin>
 
-<app-user *appUser="user"></app-user>
+
+<ng-container *appUser="user">
+    <app-user-container [userId]="user.id"></app-user-container>
+</ng-container>
