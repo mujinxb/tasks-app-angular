@@ -4,6 +4,7 @@ import { RegisterModel } from './register.model';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UserApiService } from '../../core/services/user-api.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
   registerErrors =  null;
   errorMessage = null;
 
-  constructor(private atuhService: AuthService,
+  constructor(private userApiService: UserApiService,
     private router: Router,
 ) { }
 
@@ -28,9 +29,10 @@ export class RegisterComponent implements OnInit {
   }
 
   register()  {
+    // console.log(this.registerModel);
     this.errorMessage = null;
     this.registerErrors = null;
-    this.atuhService.register(this.registerModel).subscribe(
+    this.userApiService.createNewUser(this.registerModel).subscribe(
       resp => {
         this.router.navigate(['/users']);
       },
