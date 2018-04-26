@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegisterModel } from '../register/register.model';
 import { UserApiService } from '../../core/services/user-api.service';
 import { NgForm } from '@angular/forms';
@@ -19,7 +19,10 @@ export class EditUserComponent implements OnInit {
   canEdit = false;
   editErrors =  null;
   errorMessage = null;
-  constructor( private route: ActivatedRoute, private locaiton: Location, private userApiService: UserApiService) { }
+  constructor( private route: ActivatedRoute,
+     private locaiton: Location,
+      private userApiService: UserApiService,
+       private router: Router) { }
 
   ngOnInit() {
     this.id = +this.route.snapshot.params['id'];
@@ -74,7 +77,7 @@ export class EditUserComponent implements OnInit {
     if (ans) {
       this.userApiService.deleteUser(this.id).subscribe(
         resp => {
-          this.locaiton.back();
+          this.router.navigateByUrl('/users');
         },
         err => {
           console.log(err);
