@@ -24,4 +24,12 @@ export class UserApiService {
     return this.apiService.post('users', registerModel);
   }
 
+  updateUser(id: number, userData) {
+    return this.apiService.patch('users/' + id, userData);
+  }
+
+  deleteUser(id: number) {
+    return this.apiService.delete('users/' + id);
+  }
+
 }

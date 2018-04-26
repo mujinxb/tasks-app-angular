@@ -4,7 +4,7 @@
         <app-user-item [user] = "user" ></app-user-item>
 
         <div  *appAdmin="authUser"  class="text-right mt-2">
-            <a class="btn btn-info" routerLink="/users/1/edit">Edit User</a>
+            <a class="btn btn-info" routerLink="/users/{{userId}}/edit">Edit User</a>
         </div>
         
     </div>

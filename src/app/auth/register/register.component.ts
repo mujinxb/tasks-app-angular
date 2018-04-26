@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
       if (error.hasOwnProperty(key)) {
           this.registerErrors.push(key + ' : ' + error[key]);
       }
-  }
+    }
   }
 
 }
