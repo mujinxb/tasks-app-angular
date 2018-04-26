@@ -1,7 +1,7 @@
 <div class="row mb-4">
     <div class="col-12">
         <!-- pass userdata in it -->
-        <app-user-item></app-user-item>
+        <app-user-item [user] = "user" ></app-user-item>
 
         <div  *appAdmin="authUser"  class="text-right mt-2">
             <a class="btn btn-info" routerLink="/users/1/edit">Edit User</a>

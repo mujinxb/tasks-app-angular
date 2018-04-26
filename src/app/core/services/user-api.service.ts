@@ -12,12 +12,12 @@ export class UserApiService {
   constructor(private apiService: ApiService) { }
 
   getAllUsers(): Observable<UserItem[]> {
-    return of(USER_ITEMS);
+    return this.apiService.get('users');
   }
 
 
-  getUserById() {
-
+  getUserById(id: number) {
+    return this.apiService.get('users/' + id);
   }
 
   createNewUser(registerModel: RegisterModel) {

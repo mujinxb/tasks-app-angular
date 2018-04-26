@@ -2,22 +2,27 @@
 <div class="card ">
 
     <div class="card-header text-center">
-      <h5>{{ 'Name' | uppercase }}</h5>
+      <h5>{{ user?.name | uppercase }}</h5>
     </div>
 
     <div class="card-body ">
 
-      <h6 class="card-subtitle mb-2 text-muted">ID: {{ 00 }}</h6>
+      <p class="card-subtitle mb-2 text-muted">ID: {{ user?.id }}</p>
+      <p class="card-subtitle mb-2 text-muted">Email: {{ user?.email }}</p>
+      
 
-      <p *appAdmin="authUser" class="card-text">Status: 
-        <span class="badge" [ngClass]="{'badge-success' : user?.active == true,  'badge-danger': user?.active == false}">
-          {{ user?.active == true ? 'Active' : 'Inactive' }}
-        </span>
-      </p>
+      <div *appAdmin="authUser">
+        <p>Status: 
+          <span class="badge" [ngClass]="{'badge-success' : user?.active == true,  'badge-danger': user?.active == false}">
+            {{ user?.active == true ? 'Active' : 'Inactive' }}
+          </span>
+        </p>
+        <p>Role: {{ user?.admin == true ? 'Admin' : 'User' }}</p>
+      </div>
     </div>
 
     <div class="card-footer d-flex justify-content-between">
-        <div >Assigned Tasks: <span class="badge badge-secondary"> {{user?.assignedTasks}}</span></div>
-        <div >Completed Tasks: <span class="badge badge-success"> {{user?.completedTasks}}</span></div>
+        <div class="p-2">Assigned Tasks: <span class="badge badge-secondary"> {{user?.assignedTasksCount}}</span></div>
+        <div class="p-2">Completed Tasks: <span class="badge badge-success"> {{user?.completedTasksCount}}</span></div>
     </div>
 </div>
