@@ -7,16 +7,20 @@ import { AuthUser } from '../auth-user.model';
 })
 export class UserDirective {
 
+  private hasView = false;
+
   constructor(
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef) { }
 
 
   @Input() set appUser(user: AuthUser) {
-    if (user.isAuthenticated && !user.isAdmin) {
+    if (user.isAuthenticated && !user.isAdmin && !this.hasView) {
       this.viewContainer.createEmbeddedView(this.templateRef);
-    } else {
+      this.hasView = true;
+    } else if (this.hasView) {
       this.viewContainer.clear();
+      this.hasView = false;
     }
   }
 

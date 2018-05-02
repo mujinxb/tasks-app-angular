@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 import { UserApiService } from '../../../core/services/user-api.service';
 import { UserItem } from '../../../core/models/user-item.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-container',
@@ -18,7 +19,9 @@ export class UserContainerComponent implements OnInit {
     return this.userService.user;
   }
 
-  constructor(private userService: UserService, private userApiService: UserApiService) { }
+  constructor(private userService: UserService,
+     private userApiService: UserApiService,
+     private router: Router) { }
 
   ngOnInit() {
     this.getUserData();
@@ -31,7 +34,7 @@ export class UserContainerComponent implements OnInit {
         this.user = resp;
       },
       () => {
-        console.log('error while getting the user');
+        this.router.navigateByUrl('error');
       }
     );
   }
