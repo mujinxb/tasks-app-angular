@@ -1,13 +1,13 @@
 <div class="card">
-  <h5 class="card-header">My Title</h5>
+  <h5 class="card-header">{{ task?.title }}</h5>
   <div class="card-body">
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">{{ task?.description }}</p>
   </div>
   <div *appAdmin="authUser" class="card-footer d-flex justify-content-between">
     
-    <p class="card-text"><small class="text-muted">Created at</small></p>
-    <p class="card-text"><small class="text-muted">Updated at</small></p>
-    <a class="btn btn-dark" routerLink="/tasks/1/edit">Edit Task</a>
+    <p class="card-text"><small class="text-muted">Created at: {{ task?.created_at.date | date }}</small></p>
+    <p class="card-text"><small class="text-muted">Updated at: {{ task?.updated_at.date | date}}</small></p>
+    <a class="btn btn-dark" routerLink="/tasks/{{task?.id}}/edit">Edit Task</a>
     
   </div>
 </div>

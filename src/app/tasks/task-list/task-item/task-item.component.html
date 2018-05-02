@@ -1,10 +1,10 @@
 
 <div class="row">
-  <a class="col-10" routerLink="/tasks/1">
-    <h5>This is a task title</h5>
+  <a class="col-10" routerLink="/tasks/{{task.id}}">
+    <h5>{{ task.title | titlecase }}</h5>
   </a>
-  <div *appAdmin="authUser"  class="col-2 text-center">
-    <a class="btn btn-info" routerLink="/tasks/1/edit">Edit Task</a>
+  <div *appAdmin="authUser"  class="text-center">
+    <a class="btn btn-info" routerLink="/tasks/{{task.id}}/edit">Edit Task</a>
   </div>
 </div>
 <hr>

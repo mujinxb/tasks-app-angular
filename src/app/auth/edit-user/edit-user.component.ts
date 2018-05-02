@@ -20,7 +20,7 @@ export class EditUserComponent implements OnInit {
   editErrors =  null;
   errorMessage = null;
   constructor( private route: ActivatedRoute,
-     private locaiton: Location,
+     private location: Location,
       private userApiService: UserApiService,
        private router: Router) { }
 
@@ -48,7 +48,7 @@ export class EditUserComponent implements OnInit {
     this.editErrors = null;
     this.userApiService.updateUser(this.id, this.userData).subscribe(
       (resp) => {
-        this.locaiton.back();
+        this.location.back();
       },
       (err: HttpErrorResponse) => {
         if (err.status === 422) {
@@ -87,7 +87,7 @@ export class EditUserComponent implements OnInit {
   }
 
   onCancel() {
-    this.locaiton.back();
+    this.location.back();
   }
 
   private getUserData() {

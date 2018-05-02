@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Task } from '../../core/models/task.model';
 
 @Component({
   selector: 'app-task-list',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskListComponent implements OnInit {
 
-  tasks = [1, 2, 3, 4];
+  @Input() tasks: Task[];
 
   constructor() { }
 

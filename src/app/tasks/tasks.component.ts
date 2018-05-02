@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../core/services/user.service';
+import { Task } from '../core/models/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -8,7 +9,7 @@ import { UserService } from '../core/services/user.service';
 })
 export class TasksComponent implements OnInit {
 
-
+  @Input() tasks: Task[];
 
   get authUser() {
     return this.userService.user;

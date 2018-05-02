@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../../core/models/task.model';
+import { TaskApiService } from '../../core/services/task-api.service';
 
 @Component({
   selector: 'app-tasks-container',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksContainerComponent implements OnInit {
 
-  constructor() { }
+  tasks: Task[];
+
+  constructor(private taskApiService: TaskApiService) { }
 
   ngOnInit() {
+    this.taskApiService.getAllTasks().subscribe(
+      resp => {
+        this.tasks = resp;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }

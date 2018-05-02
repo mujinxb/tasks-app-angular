@@ -1,24 +1,51 @@
+<div class="alert alert-danger"
+*ngIf="errorMessage">
+  <p><strong>Error!</strong> {{ errorMessage }}</p>
+  <ul *ngIf="errors">
+    <li *ngFor="let e of errors">
+      {{e}}
+    </li>
+  </ul>
+</div>
+
+
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h5>Edit Task</h5>
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-danger" [disabled]="!canEdit" (click)="onDelete()">Delete</button>
     </div>
     <div class="card-body">
       <div>
-          <form>
+          <form #updateTaskForm="ngForm" (ngSubmit) = "onSubmit(updateTaskForm)" >
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" class="form-control" id="title" placeholder="provide a descriptive title">
+              <input type="text" class="form-control" id="title" placeholder="provide a descriptive title"
+              name="title" required [(ngModel)]="task.title" #title="ngModel">
+  
+              <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+                <div *ngIf="title.errors.required">
+                  Title is required.
+                </div>
+              </div>
             </div>
   
             <div class="form-group">
               <label for="description">Description</label>
-              <textarea class="form-control" id="description" rows="5" placeholder="provide description here"></textarea>
+              <textarea
+                name="description" required [(ngModel)]="task.description" #description="ngModel"
+                class="form-control" id="description" rows="5" placeholder="provide description here"></textarea>
+  
+                <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+                  <div *ngIf="description.errors.required">
+                    Description is required.
+                  </div>
+                </div>
             </div>
+            <button [disabled]="!canEdit || !updateTaskForm.valid" class="btn btn-success">Update</button>
           </form>
       </div>
-      <button class="btn btn-success">Save</button>
-      <button class="btn btn-info">Cancel</button>
+      
+      <button (click)="onCancel()" class="btn btn-info mt-2">Cancel</button>
       
     </div>
   </div>

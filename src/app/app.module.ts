@@ -48,6 +48,7 @@ import { FeedbackItemComponent } from './feedback/feedback-item/feedback-item.co
 import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.component';
 import { AssignTaskComponent } from './tasks/assign-task/assign-task.component';
 import { TasksContainerComponent } from './tasks/tasks-container/tasks-container.component';
+import { TaskApiService } from './core/services/task-api.service';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { TasksContainerComponent } from './tasks/tasks-container/tasks-container
       useClass: TokenInterceptor,
       multi: true,
     },
-    UserApiService
+    UserApiService,
+    TaskApiService
   ],
   bootstrap: [AppComponent]
 })
