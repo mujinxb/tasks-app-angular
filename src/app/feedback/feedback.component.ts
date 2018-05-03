@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../core/services/user.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { UserService } from '../core/services/user.service';
   styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent implements OnInit {
+
+  @Input() TaskId: number;
 
   get authUser() {
     return this.userService.user;

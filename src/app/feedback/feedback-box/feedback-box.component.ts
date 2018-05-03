@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class FeedbackBoxComponent implements OnInit {
 
-  tasks = [{id: 1, title: 'abc'}, {id: 2, title: 'abc'}, {id: 3, title: 'abc'}, ];
+  @Input() TaskId: number;
 
   constructor() { }
 

@@ -3,6 +3,8 @@ import { UserService } from '../../../core/services/user.service';
 import { UserApiService } from '../../../core/services/user-api.service';
 import { UserItem } from '../../../core/models/user-item.model';
 import { Router } from '@angular/router';
+import { TaskApiService } from '../../../core/services/task-api.service';
+import { Task } from '../../../core/models/task.model';
 
 @Component({
   selector: 'app-user-container',
@@ -12,8 +14,8 @@ import { Router } from '@angular/router';
 export class UserContainerComponent implements OnInit {
 
   @Input() userId: number;
-
   user: UserItem;
+  tasks: Task[] = [];
 
   get authUser() {
     return this.userService.user;
@@ -21,13 +23,15 @@ export class UserContainerComponent implements OnInit {
 
   constructor(private userService: UserService,
      private userApiService: UserApiService,
+     private taskApiService: TaskApiService,
      private router: Router) { }
 
   ngOnInit() {
     this.getUserData();
+    this.getUserTasks();
   }
 
-  private getUserData() {
+  getUserData() {
     this.userApiService.getUserById(this.userId).subscribe(
       (resp: UserItem) => {
         // console.log(resp);
@@ -35,6 +39,18 @@ export class UserContainerComponent implements OnInit {
       },
       () => {
         this.router.navigateByUrl('error');
+      }
+    );
+  }
+
+  getUserTasks() {
+    this.taskApiService.getUserTasks(this.userId).subscribe(
+      (resp: Task[]) => {
+        this.tasks =  resp;
+        // console.log(resp);
+      },
+      err => {
+        console.log('error while getting the tasks for the users');
       }
     );
   }

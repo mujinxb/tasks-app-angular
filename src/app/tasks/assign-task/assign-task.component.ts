@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { UserItem } from '../../core/models/user-item.model';
+import { TaskApiService } from '../../core/services/task-api.service';
 
 @Component({
   selector: 'app-assign-task',
@@ -7,21 +9,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssignTaskComponent implements OnInit {
 
-  users = [{id: 1, name: 'ali'}, {id: 2, name: 'ahmed'}, {id: 3, name: 'anwar'}];
+  @Input() TaskId: number;
+
+  users: UserItem[] = [];
   selectedUsers = [];
 
-  constructor() { }
+  constructor(private taskApiService: TaskApiService) { }
 
   ngOnInit() {
+    this.getUnassignedUsers();
+  }
+
+  getUnassignedUsers() {
+    this.taskApiService.getUnassignedUsers(this.TaskId).subscribe(
+      (resp: UserItem[]) => {
+        this.users = resp;
+      },
+      err => {
+        console.log('error while getting users for assignment');
+      }
+    );
   }
 
   assignTasktoUsers() {
     if (this.selectedUsers.length) {
-      console.log('task assigned to ' + this.selectedUsers);
-    }
+      this.taskApiService.assignTasktoUsers(this.TaskId, this.selectedUsers).subscribe(
+        resp => {
+          this.users = this.users.filter( (u) => !this.selectedUsers.includes(u.id) );
+          this.selectedUsers = [];
+        },
+        err => {
+          console.log('error while assigning users to this task');
+        }
 
-    this.users = this.users.filter( (u) => !this.selectedUsers.includes(u.id) );
-    this.selectedUsers = [];
+      );
+    }
   }
 
 }

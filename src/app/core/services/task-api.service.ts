@@ -14,7 +14,6 @@ export class TaskApiService {
     return this.apiService.get('tasks');
   }
 
-
   getTaskById(id: number) {
     return this.apiService.get('tasks/' + id);
   }
@@ -29,6 +28,26 @@ export class TaskApiService {
 
   deleteTask(id: number) {
     return this.apiService.delete('tasks/' + id);
+  }
+
+  getTaskUsers(id: number) {
+    return this.apiService.get('tasks/' + id + '/users');
+  }
+
+  getUnassignedUsers(id: number) {
+    return this.apiService.get('tasks/' + id + '/unassignedusers');
+  }
+
+  assignTasktoUsers(id: number, userIds: number[]) {
+    return this.apiService.post('tasks/' + id + '/assigntask', { 'userIds': userIds});
+  }
+
+  removeUserFromTask(id: number, userId) {
+    return this.apiService.delete('tasks/' + id + '/users/' + userId);
+  }
+
+  getUserTasks(id: number) {
+    return this.apiService.get('users/' + id + '/tasks');
   }
 
 }
