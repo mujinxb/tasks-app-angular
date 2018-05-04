@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../core/services/user.service';
+import { FeedbackApiService } from '../core/services/feedback-api.service';
 
 @Component({
   selector: 'app-feedback',
@@ -8,15 +9,35 @@ import { UserService } from '../core/services/user.service';
 })
 export class FeedbackComponent implements OnInit {
 
-  @Input() TaskId: number;
+  @Input() taskId: number;
+  @Input() userId: number;
+  feedbacks = [];
 
   get authUser() {
     return this.userService.user;
   }
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private feedbackApiService: FeedbackApiService) { }
 
   ngOnInit() {
+
+    if (this.taskId) {
+      this.getFeedbacks('getFeedbacksByTask', this.taskId);
+
+    } else if (this.userId) {
+      this.getFeedbacks('getFeedbacksByUser', this.userId);
+    }
+  }
+
+  getFeedbacks(feedbackMethod: string, id: number) {
+    this.feedbackApiService[feedbackMethod](id).subscribe(
+      (resp) => {
+        this.feedbacks = resp;
+      },
+      err => {
+        console.log('Error, geeting feedbacks');
+      }
+    );
   }
 
 }

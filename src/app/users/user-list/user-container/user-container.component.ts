@@ -5,6 +5,7 @@ import { UserItem } from '../../../core/models/user-item.model';
 import { Router } from '@angular/router';
 import { TaskApiService } from '../../../core/services/task-api.service';
 import { Task } from '../../../core/models/task.model';
+import { FeedbackApiService } from '../../../core/services/feedback-api.service';
 
 @Component({
   selector: 'app-user-container',
@@ -24,6 +25,7 @@ export class UserContainerComponent implements OnInit {
   constructor(private userService: UserService,
      private userApiService: UserApiService,
      private taskApiService: TaskApiService,
+     private feedbackApiService: FeedbackApiService,
      private router: Router) { }
 
   ngOnInit() {

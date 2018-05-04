@@ -49,6 +49,7 @@ import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.compo
 import { AssignTaskComponent } from './tasks/assign-task/assign-task.component';
 import { TasksContainerComponent } from './tasks/tasks-container/tasks-container.component';
 import { TaskApiService } from './core/services/task-api.service';
+import { FeedbackApiService } from './core/services/feedback-api.service';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { TaskApiService } from './core/services/task-api.service';
       multi: true,
     },
     UserApiService,
-    TaskApiService
+    TaskApiService,
+    FeedbackApiService
   ],
   bootstrap: [AppComponent]
 })

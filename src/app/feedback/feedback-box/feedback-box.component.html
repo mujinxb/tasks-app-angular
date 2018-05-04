@@ -3,15 +3,15 @@
 
 
 <div class="card mb-2">
-    <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="card-header">
         <label for="feedback">Provide Feedback for this task</label>
-        <button class="btn btn-primary">Mark as Completed</button>
     </div>
     <div class="card-body">
         <form #feedbackForm="ngForm" (ngSubmit) = "onSubmit(feedbackForm)" >
             <div class="form-group">
-                
-                <textarea class="form-control" id="feedback" rows="5" placeholder="provide feedback here"></textarea>
+                <textarea 
+                name="description" required ngModel #description="ngModel"
+                class="form-control" id="description" rows="5" placeholder="provide feedback here"></textarea>
             </div>
             
             <button type="submit" [disabled]="!feedbackForm.valid" class="btn btn-dark">Submit Feedback</button>

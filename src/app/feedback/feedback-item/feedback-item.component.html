@@ -1,14 +1,17 @@
 
 <div class="card mb-3">
   <div class="card-body">
-    <p class="card-title">Mu nlfsdlkjflks klsdfhjsdh jsdfhjsid Feedback</p>
+    <p class="card-title">{{ feedback?.description }}</p>
       
   </div>
   <div class="card-footer">
       <small>
-      Posted By <a class="text-muted" routerLink="/tasks/1/users/1">Mujahid</a>
-       on task <a class="text-muted" routerLink="/tasks/1">Task Title</a>
-       at <span class="text-muted">{{ '24 April 2018' | date }}</span>
+        Posted
+        <ng-container *appAdmin="authUser">
+          by <a class="text-muted"  routerLink="/users/{{feedback?.user_id}}">{{feedback?.user_name}}</a>
+        </ng-container>
+       on task <a class="text-muted" routerLink="/tasks/{{feedback?.task_id}}">{{feedback?.task_title}}</a>
+       at <span class="text-muted">{{ feedback?.created_at.date | date:'medium' }}</span>
       </small>
   </div>
 </div>

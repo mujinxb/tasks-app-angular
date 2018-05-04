@@ -1,7 +1,6 @@
 
-<div>
-  <app-feedback-item ></app-feedback-item>
-  <app-feedback-item ></app-feedback-item>
-</div> 
+<ng-container *ngFor="let feedback of feedbacks">
+  <app-feedback-item [feedback] = "feedback" ></app-feedback-item>
+</ng-container>
 
 
