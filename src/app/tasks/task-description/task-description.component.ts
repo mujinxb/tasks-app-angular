@@ -35,4 +35,15 @@ export class TaskDescriptionComponent implements OnInit {
     );
   }
 
+  onComplete() {
+    this.taskApiService.markTaskCompletedForUser(this.TaskId, this.authUser.id).subscribe(
+      resp => {
+        this.task.completed = true;
+      },
+      err => {
+        console.log('error marking the task as completed');
+      }
+    );
+  }
+
 }

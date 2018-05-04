@@ -1,9 +1,6 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between align-content-center">
     <h5>{{ task?.title }}</h5>
-    <!-- <ng-container *appUser="authUser">
-      <button class="btn btn-success">Mark as Completed</button>
-    </ng-container> -->
   </div>
   <div class="card-body">
     <p class="card-text">{{ task?.description }}</p>
@@ -15,4 +12,11 @@
     <a class="btn btn-dark" routerLink="/tasks/{{task?.id}}/edit">Edit Task</a>
     
   </div>
+  <ng-container *appUser="authUser">
+    <div  class="card-footer d-flex justify-content-between  align-content-center">
+      <p class="card-text"><small class="text-muted">Assigned at: {{ task?.assigned_at?.date | date }}</small></p>
+      <p *ngIf="task?.completed" class="card-text"><small class="text-muted">Completed at: {{ task?.completed_at?.date | date}}</small></p>
+      <button *ngIf="!task?.completed" (click)=onComplete()  class="btn btn-success">Mark as Completed</button>
+    </div>
+    </ng-container>
 </div>

@@ -42,12 +42,16 @@ export class TaskApiService {
     return this.apiService.post('tasks/' + id + '/assigntask', { 'userIds': userIds});
   }
 
-  removeUserFromTask(id: number, userId) {
+  removeUserFromTask(id: number, userId: number) {
     return this.apiService.delete('tasks/' + id + '/users/' + userId);
   }
 
   getUserTasks(id: number) {
     return this.apiService.get('users/' + id + '/tasks');
+  }
+
+  markTaskCompletedForUser(id: number, userId: number) {
+    return this.apiService.post('users/' + userId + '/tasks/' + id);
   }
 
 }
