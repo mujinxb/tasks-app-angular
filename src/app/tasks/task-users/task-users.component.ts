@@ -42,4 +42,9 @@ export class TaskUsersComponent implements OnInit {
     );
   }
 
+
+  updateUsers(newUsers: UserItem[]) {
+    this.users.splice(0, 0, ...newUsers);
+  }
+
 }

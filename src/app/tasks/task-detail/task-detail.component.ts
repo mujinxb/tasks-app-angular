@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { TaskApiService } from '../../core/services/task-api.service';
 import { UserItem } from '../../core/models/user-item.model';
 import { FeedbackComponent } from '../../feedback/feedback.component';
+import { TaskUsersComponent } from '../task-users/task-users.component';
+import { AssignTaskComponent } from '../assign-task/assign-task.component';
 
 @Component({
   selector: 'app-task-detail',
@@ -14,6 +16,8 @@ export class TaskDetailComponent implements OnInit {
 
   id: number;
   @ViewChild(FeedbackComponent) private feedbackComp: FeedbackComponent;
+  @ViewChild(TaskUsersComponent) private taskUsersComp: TaskUsersComponent;
+  @ViewChild(AssignTaskComponent) private assignTaskComp: AssignTaskComponent;
 
   get authUser() {
     return this.userService.user;
@@ -26,11 +30,11 @@ export class TaskDetailComponent implements OnInit {
   }
 
   updateAssignedUsers(users: UserItem[]) {
-    console.log(users);
+    this.taskUsersComp.updateUsers(users);
   }
 
   updateUnassignedUsers(user: UserItem) {
-    console.log(user);
+    this.assignTaskComp.updateUsers(user);
   }
 
   updateFeedbacks(feedback) {

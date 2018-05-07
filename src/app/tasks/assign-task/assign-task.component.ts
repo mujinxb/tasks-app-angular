@@ -10,7 +10,7 @@ import { TaskApiService } from '../../core/services/task-api.service';
 export class AssignTaskComponent implements OnInit {
 
   @Input() TaskId: number;
-  @Output() userAssigned = new EventEmitter<any>();
+  @Output() userAssigned = new EventEmitter<UserItem[]>();
 
   users: UserItem[] = [];
   selectedUsers = [];
@@ -46,6 +46,10 @@ export class AssignTaskComponent implements OnInit {
 
       );
     }
+  }
+
+  updateUsers(user: UserItem) {
+    this.users = [...this.users, user];
   }
 
 }
