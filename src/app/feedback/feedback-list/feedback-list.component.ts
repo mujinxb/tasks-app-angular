@@ -20,7 +20,8 @@ export class FeedbackListComponent implements OnInit {
     if (ans) {
       this.feedbackApiService.delteFeedback(feedbackId).subscribe(
         resp => {
-          this.feedbacks = this.feedbacks.filter(feedback => feedbackId !== feedback.id);
+          const index = this.feedbacks.findIndex(feedback => feedback.id === resp.id);
+          this.feedbacks.splice(index, 1);
         },
         err => {
           console.log(err);

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TaskApiService } from '../../core/services/task-api.service';
 import { UserItem } from '../../core/models/user-item.model';
 
@@ -10,6 +10,7 @@ import { UserItem } from '../../core/models/user-item.model';
 export class TaskUsersComponent implements OnInit {
 
   @Input() TaskId: number;
+  @Output() userRemoved = new EventEmitter<any>();
   users: UserItem[] = [];
 
   constructor(private taskApiService: TaskApiService ) { }
@@ -31,7 +32,8 @@ export class TaskUsersComponent implements OnInit {
 
   unassignTask(id: number) {
     this.taskApiService.removeUserFromTask(this.TaskId, id).subscribe(
-      (resp) => {
+      (resp: UserItem) => {
+        this.userRemoved.emit(resp);
         this.users = this.users.filter((u) => u.id !== id );
       },
       err => {

@@ -18,5 +18,5 @@
       <p *ngIf="task?.completed" class="card-text"><small class="text-muted">Completed at: {{ task?.completed_at?.date | date}}</small></p>
       <button *ngIf="!task?.completed" (click)=onComplete()  class="btn btn-success">Mark as Completed</button>
     </div>
-    </ng-container>
+  </ng-container>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FeedbackApiService } from '../../core/services/feedback-api.service';
 
@@ -10,6 +10,7 @@ import { FeedbackApiService } from '../../core/services/feedback-api.service';
 export class FeedbackBoxComponent implements OnInit {
 
   @Input() TaskId: number;
+  @Output() feedbackCreated = new EventEmitter<any>();
 
   constructor(private feedbackApiService: FeedbackApiService) { }
 
@@ -28,7 +29,7 @@ export class FeedbackBoxComponent implements OnInit {
     this.feedbackApiService.createFeedbackOnTask(this.TaskId, form.value).subscribe(
       resp => {
         form.reset();
-        console.log('feedback created');
+        this.feedbackCreated.emit(resp);
       },
       err => {
         console.log('Error creating a feedback');

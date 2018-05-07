@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserItem } from '../../core/models/user-item.model';
 import { TaskApiService } from '../../core/services/task-api.service';
 
@@ -10,6 +10,7 @@ import { TaskApiService } from '../../core/services/task-api.service';
 export class AssignTaskComponent implements OnInit {
 
   @Input() TaskId: number;
+  @Output() userAssigned = new EventEmitter<any>();
 
   users: UserItem[] = [];
   selectedUsers = [];
@@ -34,7 +35,8 @@ export class AssignTaskComponent implements OnInit {
   assignTasktoUsers() {
     if (this.selectedUsers.length) {
       this.taskApiService.assignTasktoUsers(this.TaskId, this.selectedUsers).subscribe(
-        resp => {
+        (resp: UserItem[]) => {
+          this.userAssigned.emit(resp);
           this.users = this.users.filter( (u) => !this.selectedUsers.includes(u.id) );
           this.selectedUsers = [];
         },

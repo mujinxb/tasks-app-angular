@@ -40,4 +40,8 @@ export class FeedbackComponent implements OnInit {
     );
   }
 
+  updateFeedbacks(feedback) {
+    this.feedbacks.unshift(feedback);
+  }
+
 }
