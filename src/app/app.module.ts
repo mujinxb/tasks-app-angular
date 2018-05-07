@@ -39,7 +39,6 @@ import { EditUserComponent } from './auth/edit-user/edit-user.component';
 import { UserContainerComponent } from './users/user-list/user-container/user-container.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
-import { UserTaskComponent } from './tasks/user-task/user-task.component';
 import { TaskDescriptionComponent } from './tasks/task-description/task-description.component';
 import { TaskUsersComponent } from './tasks/task-users/task-users.component';
 import { FeedbackComponent } from './feedback/feedback.component';
@@ -47,7 +46,6 @@ import { FeedbackListComponent } from './feedback/feedback-list/feedback-list.co
 import { FeedbackItemComponent } from './feedback/feedback-item/feedback-item.component';
 import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.component';
 import { AssignTaskComponent } from './tasks/assign-task/assign-task.component';
-import { TasksContainerComponent } from './tasks/tasks-container/tasks-container.component';
 import { TaskApiService } from './core/services/task-api.service';
 import { FeedbackApiService } from './core/services/feedback-api.service';
 
@@ -76,7 +74,6 @@ import { FeedbackApiService } from './core/services/feedback-api.service';
     UserContainerComponent,
     NewTaskComponent,
     EditTaskComponent,
-    UserTaskComponent,
     TaskDescriptionComponent,
     TaskUsersComponent,
     FeedbackComponent,
@@ -84,7 +81,6 @@ import { FeedbackApiService } from './core/services/feedback-api.service';
     FeedbackItemComponent,
     FeedbackBoxComponent,
     AssignTaskComponent,
-    TasksContainerComponent,
   ],
   imports: [
     BrowserModule,

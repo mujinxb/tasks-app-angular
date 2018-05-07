@@ -16,7 +16,6 @@ export class UserContainerComponent implements OnInit {
 
   @Input() userId: number;
   user: UserItem;
-  tasks: Task[] = [];
 
   get authUser() {
     return this.userService.user;
@@ -30,7 +29,6 @@ export class UserContainerComponent implements OnInit {
 
   ngOnInit() {
     this.getUserData();
-    this.getUserTasks();
   }
 
   getUserData() {
@@ -41,18 +39,6 @@ export class UserContainerComponent implements OnInit {
       },
       () => {
         this.router.navigateByUrl('error');
-      }
-    );
-  }
-
-  getUserTasks() {
-    this.taskApiService.getUserTasks(this.userId).subscribe(
-      (resp: Task[]) => {
-        this.tasks =  resp;
-        // console.log(resp);
-      },
-      err => {
-        console.log('error while getting the tasks for the users');
       }
     );
   }

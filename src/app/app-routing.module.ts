@@ -16,20 +16,19 @@ import { EditUserComponent } from './auth/edit-user/edit-user.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
-import { UserTaskComponent } from './tasks/user-task/user-task.component';
 import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.component';
-import { TasksContainerComponent } from './tasks/tasks-container/tasks-container.component';
+
+import { TasksComponent } from './tasks/tasks.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [GuestGuard]},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
 
-  { path: 'tasks', component: TasksContainerComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'tasks/new', component: NewTaskComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'tasks/:id', component: TaskDetailComponent, canActivate: [AuthGuard]},
   { path: 'tasks/:id/edit', component: EditTaskComponent, canActivate: [AuthGuard, AdminGuard]},
-  { path: 'tasks/:id/users/:id', component: UserTaskComponent, canActivate: [AuthGuard]},
 
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/new', component: RegisterComponent, canActivate: [AuthGuard, AdminGuard]},
