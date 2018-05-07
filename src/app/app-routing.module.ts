@@ -11,7 +11,6 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { AdminGuard } from './core/guards/admin.guard';
 import { UsersComponent } from './users/users.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { UserDetailsComponent } from './users/user-list/user-details/user-details.component';
 import { EditUserComponent } from './auth/edit-user/edit-user.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
@@ -19,6 +18,9 @@ import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
 import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.component';
 
 import { TasksComponent } from './tasks/tasks.component';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
+
+
 
 
 const routes: Routes = [
