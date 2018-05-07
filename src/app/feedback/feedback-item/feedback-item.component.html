@@ -4,7 +4,7 @@
     <p class="card-title">{{ feedback?.description }}</p>
       
   </div>
-  <div class="card-footer">
+  <div class="card-footer d-flex justify-content-between align-content-center">
       <small>
         Posted
         <ng-container *appAdmin="authUser">
@@ -13,6 +13,7 @@
        on task <a class="text-muted" routerLink="/tasks/{{feedback?.task_id}}">{{feedback?.task_title}}</a>
        at <span class="text-muted">{{ feedback?.created_at.date | date:'medium' }}</span>
       </small>
+      <button (click)="onFeedbackDelete(feedback.id)" class="btn btn-sm btn-danger" >x</button>
   </div>
 </div>
   

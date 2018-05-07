@@ -17,4 +17,8 @@ export class FeedbackApiService {
   createFeedbackOnTask(id: number, feedbackData) {
     return this.apiService.post('tasks/' + id + '/feedbacks', feedbackData);
   }
+
+  delteFeedback(id: number) {
+    return this.apiService.delete('feedbacks/' + id);
+  }
 }

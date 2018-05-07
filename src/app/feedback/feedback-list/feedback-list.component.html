@@ -1,6 +1,6 @@
 
 <ng-container *ngFor="let feedback of feedbacks">
-  <app-feedback-item [feedback] = "feedback" ></app-feedback-item>
+  <app-feedback-item [feedback] = "feedback" (delete)="feedbackDelete($event)"></app-feedback-item>
 </ng-container>
 
 
