@@ -1,4 +1,4 @@
-export class RegisterModel {
+export class EditUserModel {
     constructor(
         public name: string = '',
         public email: string = '',

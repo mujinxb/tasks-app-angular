@@ -23,7 +23,7 @@
               name="title" required [(ngModel)]="task.title" #title="ngModel">
   
               <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
-                <div *ngIf="title.errors.required">
+                <div *ngIf="title?.errors.required">
                   Title is required.
                 </div>
               </div>
@@ -36,7 +36,7 @@
                 class="form-control" id="description" rows="5" placeholder="provide description here"></textarea>
   
                 <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
-                  <div *ngIf="description.errors.required">
+                  <div *ngIf="description?.errors.required">
                     Description is required.
                   </div>
                 </div>

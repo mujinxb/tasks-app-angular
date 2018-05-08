@@ -1,0 +1,84 @@
+<div class="alert alert-danger" *ngIf="errorMessage">
+  <p><strong>Error!</strong> {{ errorMessage }}</p>
+  <ul *ngIf="errors">
+    <li *ngFor="let e of errors">
+      {{e}}
+    </li>
+  </ul>
+</div>
+
+<div class="card">
+
+  <div class="card-header d-flex justify-content-between align-items-center">
+      <h5>{{ canEdit ? 'Edit': 'Create'  }} User</h5>
+      <button class="btn btn-danger" *ngIf="canEdit" (click)="onDelete()">Delete</button>
+  </div>
+
+  <div class="card-body">
+
+    <div>
+      <form #userForm="ngForm" (ngSubmit) = "onSubmit(userForm)" autocomplete="off" >
+        
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="john doe"
+          name="name" [(ngModel)] = "userData.name " required #name="ngModel">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+            <div *ngIf="name?.errors.required">
+              Name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="john@doe.com" autocomplete="nope"
+          name="email" [(ngModel)] = "userData.email" required email #email="ngModel">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+            <div *ngIf="email?.errors.required">
+              Email is required.
+            </div>
+            <div *ngIf="email?.errors.email">
+              Please provide a valid email.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off"
+          name="password" [(ngModel)] = "userData.password" #pw="ngModel" [required]="!canEdit" >
+          <div *ngIf="pw.invalid && (pw.dirty || pw.touched)" class="alert alert-danger">
+            <div *ngIf="pw?.errors.required">
+              Password is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select class="form-control" id="status" required name="active" [(ngModel)] = "userData.active" >
+            <option  [ngValue] = "true" >Active</option>
+            <option  [ngValue] = "false" >Inactive</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select class="form-control" id="role" required name="admin" [(ngModel)] = "userData.admin" >
+            <option  [ngValue] = "true" >Admin</option>
+            <option  [ngValue] = "false" >User</option>
+          </select>
+        </div>
+
+        
+        <button [disabled]="!userForm.valid"  type="submit" class="btn btn-lg btn-primary">Save</button>
+
+        
+      </form>
+
+      <button  (click)=onCancel() class="btn btn-info mt-2">Cancel</button>
+    </div>
+  </div>
+
+</div>

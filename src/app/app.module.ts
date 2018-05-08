@@ -11,7 +11,7 @@ import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskItemComponent } from './tasks/task-list/task-item/task-item.component';
 import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './dashboard/admin/admin.component';
 
@@ -35,7 +35,6 @@ import { UsersComponent } from './users/users.component';
 
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserItemComponent } from './users/user-list/user-item/user-item.component';
-import { EditUserComponent } from './auth/edit-user/edit-user.component';
 
 import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
 import { TaskDescriptionComponent } from './tasks/task-description/task-description.component';
@@ -48,6 +47,7 @@ import { AssignTaskComponent } from './tasks/assign-task/assign-task.component';
 import { TaskApiService } from './core/services/task-api.service';
 import { FeedbackApiService } from './core/services/feedback-api.service';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 
 
@@ -60,7 +60,6 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
     TaskDetailComponent,
     TaskItemComponent,
     LoginComponent,
-    RegisterComponent,
     DashboardComponent,
     AdminComponent,
     PageNotFoundComponent,

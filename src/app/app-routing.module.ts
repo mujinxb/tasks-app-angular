@@ -10,8 +10,6 @@ import { GuestGuard } from './core/guards/guest.guard';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AdminGuard } from './core/guards/admin.guard';
 import { UsersComponent } from './users/users.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { EditUserComponent } from './auth/edit-user/edit-user.component';
 
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
@@ -19,6 +17,7 @@ import { FeedbackBoxComponent } from './feedback/feedback-box/feedback-box.compo
 
 import { TasksComponent } from './tasks/tasks.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 
 
@@ -33,7 +32,7 @@ const routes: Routes = [
   { path: 'tasks/:id/edit', component: EditTaskComponent, canActivate: [AuthGuard, AdminGuard]},
 
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard, AdminGuard]},
-  { path: 'users/new', component: RegisterComponent, canActivate: [AuthGuard, AdminGuard]},
+  { path: 'users/create', component: EditUserComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard, AdminGuard]},
   { path: 'users/:id/edit', component: EditUserComponent, canActivate: [AuthGuard, AdminGuard]},
 

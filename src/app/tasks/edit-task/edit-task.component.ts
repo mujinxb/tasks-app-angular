@@ -39,7 +39,7 @@ export class EditTaskComponent implements OnInit {
         this.canEdit = true;
       },
       err => {
-        this.router.navigate(['/tasks']);
+        this.errorMessage = 'Error while getting the task data';
       }
     );
   }
