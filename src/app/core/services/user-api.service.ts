@@ -4,7 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { UserItem } from '../models/user-item.model';
 import { USER_ITEMS } from '../mock/user-items.mock';
 import { of } from 'rxjs/observable/of';
-import { RegisterModel } from '../../auth/register/register.model';
+import { EditUserModel } from '../../users/edit-user/edit-user.model';
+
 
 @Injectable()
 export class UserApiService {
@@ -20,8 +21,8 @@ export class UserApiService {
     return this.apiService.get('users/' + id);
   }
 
-  createNewUser(registerModel: RegisterModel) {
-    return this.apiService.post('users', registerModel);
+  createNewUser(userData: EditUserModel) {
+    return this.apiService.post('users', userData);
   }
 
   updateUser(id: number, userData) {

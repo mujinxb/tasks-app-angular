@@ -57,10 +57,9 @@ export class EditUserComponent implements OnInit {
   }
 
   performEdit(form) {
-
-    if (this.userData['password'].trim()) {
+    if (this.userData['password'] && this.userData['password'].trim()) {
       this.userData['password'] = this.userData['password'].trim();
-    } else {
+    } else if (this.userData['password']) {
       delete this.userData['password'];
     }
 
