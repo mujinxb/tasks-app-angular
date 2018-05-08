@@ -36,7 +36,7 @@ import { UsersComponent } from './users/users.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserItemComponent } from './users/user-list/user-item/user-item.component';
 import { EditUserComponent } from './auth/edit-user/edit-user.component';
-import { NewTaskComponent } from './tasks/new-task/new-task.component';
+
 import { EditTaskComponent } from './tasks/edit-task/edit-task.component';
 import { TaskDescriptionComponent } from './tasks/task-description/task-description.component';
 import { TaskUsersComponent } from './tasks/task-users/task-users.component';
@@ -73,7 +73,6 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
     UsersComponent,
     EditUserComponent,
     UserDetailsComponent,
-    NewTaskComponent,
     EditTaskComponent,
     TaskDescriptionComponent,
     TaskUsersComponent,

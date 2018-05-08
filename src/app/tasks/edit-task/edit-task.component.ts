@@ -19,15 +19,17 @@ export class EditTaskComponent implements OnInit {
   errors =  null;
   errorMessage = null;
 
-  constructor(private location: Location, private taskApiService: TaskApiService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private location: Location,
+    private taskApiService: TaskApiService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.taskId = +this.route.snapshot.params['id'];
-    this.getTask();
-  }
-
-  onCancel() {
-    this.location.back();
+    if (this.taskId) {
+      this.getTask();
+    }
   }
 
   getTask() {
@@ -37,7 +39,40 @@ export class EditTaskComponent implements OnInit {
         this.canEdit = true;
       },
       err => {
-        // this.router.navigateByUrl('error');
+        this.router.navigate(['/tasks']);
+      }
+    );
+  }
+
+  onSubmit(form: NgForm) {
+    this.errorMessage = null;
+    this.errors = null;
+
+    if (this.canEdit) {
+      this.editTask();
+    } else {
+      this.createNewTask();
+    }
+  }
+
+  createNewTask() {
+    this.taskApiService.createNewTask(this.task).subscribe(
+      resp => {
+        this.router.navigate(['/tasks']);
+      },
+      (err: HttpErrorResponse) => {
+        this.handleError(err);
+      }
+    );
+  }
+
+  editTask() {
+    this.taskApiService.updateTask(this.taskId, this.task).subscribe(
+      (resp) => {
+        this.location.back();
+      },
+      (err: HttpErrorResponse) => {
+        this.handleError(err);
       }
     );
   }
@@ -48,7 +83,7 @@ export class EditTaskComponent implements OnInit {
       if (ans) {
         this.taskApiService.deleteTask(this.taskId).subscribe(
           resp => {
-            this.router.navigateByUrl('/tasks');
+            this.router.navigate(['/tasks']);
           },
           err => {
             this.errorMessage = 'Something went wrong, we are unable to delete task at the moment.';
@@ -58,29 +93,17 @@ export class EditTaskComponent implements OnInit {
     }
   }
 
-  onSubmit(form: NgForm) {
-    if (this.canEdit) {
-      this.editTask();
-    }
+  onCancel() {
+    this.location.back();
   }
 
-  editTask() {
-    this.errorMessage = null;
-    this.errors = null;
-    this.taskApiService.updateTask(this.taskId, this.task).subscribe(
-      (resp) => {
-        this.location.back();
-      },
-      (err: HttpErrorResponse) => {
-        if (err.status === 422) {
-          console.log(err.error);
-          this.errorMessage =  err.error.message;
-          this.handleInvalidDataError(err.error.errors);
-        } else {
-          this.errorMessage = 'Something went wrong, try again!';
-        }
-      }
-    );
+  handleError(err) {
+    if (err.status === 422) {
+      this.errorMessage =  err.error.message;
+      this.handleInvalidDataError(err.error.errors);
+    } else {
+      this.errorMessage = 'Something went wrong, try again!';
+    }
   }
 
   handleInvalidDataError(error) {

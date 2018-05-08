@@ -11,12 +11,12 @@
 
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h5>Edit Task</h5>
-        <button class="btn btn-danger" [disabled]="!canEdit" (click)="onDelete()">Delete</button>
+        <h5>{{ canEdit ? 'Edit': 'Create'  }} Task</h5>
+        <button class="btn btn-danger" *ngIf="canEdit" (click)="onDelete()">Delete</button>
     </div>
     <div class="card-body">
       <div>
-          <form #updateTaskForm="ngForm" (ngSubmit) = "onSubmit(updateTaskForm)" >
+          <form #taskForm="ngForm" (ngSubmit) = "onSubmit(taskForm)" >
             <div class="form-group">
               <label for="title">Title</label>
               <input type="text" class="form-control" id="title" placeholder="provide a descriptive title"
@@ -41,7 +41,7 @@
                   </div>
                 </div>
             </div>
-            <button [disabled]="!canEdit || !updateTaskForm.valid" class="btn btn-success">Update</button>
+            <button [disabled]="!taskForm.valid" class="btn btn-success">Save</button>
           </form>
       </div>
       
