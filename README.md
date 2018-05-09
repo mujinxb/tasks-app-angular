@@ -1,101 +1,83 @@
-# TasksApp - [tasks-app-angular](https://github.com/mujinxb/tasks-app-angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
-## install node packages
 
-Run `npm install` to install required node packages
+# TasksApp
+> ### This project is about task management where admin can manage users, add tasks and assigns them to users and user will be able to view his tasks and can post feedback against a task
 
-## Development server
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3 to practice web  application development with Angular that interacts with an actual backend server including CRUD operations, authentication and more.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Getting started
 
-## Build
+### Clone the repo
 
+```shell
+git clone https://github.com/mujinxb/tasks-app-angular
+cd tasks-app-angular
+```
+
+### Install npm packages
+
+Install the `npm` packages described in the `package.json` and verify that it works:
+
+```shell
+npm install
+```
+### Development server  
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Shut it down manually with `Ctrl-C` to stop it.
+
+### Building the project
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
+### Making requests to the backend API
 
-## Backend api
+For backend we have used Laravel 5.5. You can view [the API spec here](https://github.com/mujinxb/tasks-backend/blob/master/readme.md) which contains all routes & responses for the server.
 
-Project uses backed api built in Laravel. To view the backend src/docs visit [tasks-backend](https://github.com/mujinxb/tasks-backend).
+The source code for the backend server can be found in the [tasks-backend repo](https://github.com/mujinxb/tasks-backend).
 
+If you want to change the API URL to your local server, simply edit `src/environments/environment.ts` and change `api_url` to the local server's URL (i.e. `localhost:3000/api`)
 
-# Features
+## Functionality overview
 
-- ## Admin features
+**General functionality:**
 
-    - ### Admin can manage the users
-        - create user
-        - edit user (name, email, password, status, role)
-        - delete user
-        - view user details
-            - view user basic info
-            - view tasks assigned to user
-            - view feedbacks given by this user
-        - view list of all users
-            - view user basic info as card
+- Authenticate users via JWT (login + logout button on header)
+- CRUD users (user can only Read its profile)
+- CRUD Tasks (user can view his tasks only)
+- CR*D Feedback on articles (only user can create feedback, admin can read and delete)
+- GET and display lists of all tasks (admin)
+- GET and display list of all users(admin)
+- Mark an assigned task completed (user)
 
-    - ### Admin can manage tasks
-        - create task
-        - edit task
-        - delete task
-        - view task details
-            - view task description
-            - assign this task to users
-            - view users who are assigned this task
-            - view feedbacks by all users against this task
-            - delete feedback given by any user
+**The general functionality breakdown looks like this:**
 
-- ## User features
-    - ### Authenticated User can 
-        - view its basic info 
-        - view tasks assigned to it
-        - view task details of an assigned task
-            - mark the assigned task as completed
-            - task description
-            - feedbacks given by this user against this task
-            - post a feedback agaist this task
-        - view feedbacks given by this user against all tasks
-    
-- ## Authentication
-    - Project uses jwt tokens for authentication
+- ### Admin can manage the users
+    - create user
+    - edit user (name, email, password, status, role)
+    - delete user
+    - view user details
+        - view user basic information
+        - view tasks assigned to user
+        - view feedbacks given by this user
+    - view list of all users
+        - view user basic information as card
 
-    - ### Routes are protected by guards
-        - auth guard
-            - checks whether user is loggedin or not using AuthService isLoggedin() method, retrun true if logged in else redirect to login - - page along with current page url
-                - isloggedin() method simply checks the the presence of token in localstorage and its expiry using jwtService
-                - return true if token is present and not expired else returns false
-
-        - admin guard
-            - checks whether a user is admin or not using UserService
-            - return  true is user isAdmin else false
-
-        - guest guard
-            - returns true if user is not loggedin else redirect to home and return false
-
-    - ### Components and elements are protected using directives
-        - all these directive are bound to user object of type AuthUser which parent componet take from UserService
-
-        - admin directive
-            - displays the element only if user is authenticated  and  is admin
-
-        - user directive
-            - displays the element only if user is authenticated  and  is not admin
-
-        - auth directive
-           - displays the element only if user is authenticated  (user can be admin or simple user)
-
-        - no auth directive
-           - displays the element only if user is not  authenticated I.e not loggedin
-
-- ### Interceptor
-    - An Interceptor which adds headers to the outgoing http request
-    - 'Content-Type': 'application/json'
-    - 'Accept': 'application/json'
-    - additionally  add ‘Authorization’: ‘Bearer token if token is present’
-
-- ### Services
-    - a generic api service to perform http requests
-    - AuthService to authicate User
-    - UserService to get Authetnicated user data and login/logout
-    - TasksApiService, FeedbacksApiService and UserApiService to perform http request 
+- ### Admin can manage tasks
+    - create task
+    - edit task
+    - delete task
+    - view task details
+        - view task description
+        - assign users this task
+        - view users who are assigned this task
+        - view feedbacks by all users against this task
+        - delete feedback given by any user
+          
+- ### Authenticated User can 
+    - view his basic information 
+    - view tasks assigned to his
+    - view task details of an assigned task
+        - mark the assigned task as completed
+        - task description
+        - feedback given by  user against this task
+        - post a feedback agaist this task
+    - view feedback given by this user against all tasks
