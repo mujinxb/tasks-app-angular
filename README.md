@@ -30,7 +30,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ### Making requests to the backend API
 
-For backend we have used Laravel 5.5. You can view [the API spec here](https://github.com/mujinxb/tasks-backend/blob/master/readme.md) which contains all routes & responses for the server.
+For backend we have used Laravel 5.5. You can view [the API spec here](https://github.com/mujinxb/tasks-backend/blob/master/api-readme.md) which contains all routes & responses for the server.
 
 The source code for the backend server can be found in the [tasks-backend repo](https://github.com/mujinxb/tasks-backend).
 
