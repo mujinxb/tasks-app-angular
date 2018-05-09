@@ -41,11 +41,11 @@ If you want to change the API URL to your local server, simply edit `src/environ
 **General functionality:**
 
 - Authenticate users via JWT (login + logout button on header)
-- CRUD users (user can only Read its profile)
+- CRUD Users (user can only Read its profile)
 - CRUD Tasks (user can view his tasks only)
-- CR*D Feedback on articles (only user can create feedback, admin can read and delete)
-- GET and display lists of all tasks (admin)
-- GET and display list of all users(admin)
+- CR*D Feedback on Tasks (only user can create feedback, admin can read and delete)
+- GET and display lists of all Tasks (admin)
+- GET and display list of all Users(admin)
 - Mark an assigned task completed (user)
 
 **The general functionality breakdown looks like this:**
